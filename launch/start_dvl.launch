@@ -1,0 +1,11 @@
+<launch>
+  <arg name="frame_id" default="nortek_dvl" />
+  <arg name="port_name" default="/dev/ttyUSB0" />
+
+
+  <node  name="dvl_node" pkg="nortek_dvl" type="driver_node" output="screen" >
+    <param name="frame_id" value="$(arg frame_id)" />
+    <param name="port_name" value="$(arg port_name)" />
+  </node>
+
+</launch>

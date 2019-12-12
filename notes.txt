@@ -1,0 +1,168 @@
+Bottom track ASCII formats
+
+1x
+Format: $PNORBT7
+Time: ,1572969492.0009, included in header
+DT1: ,21.516
+DT2: ,-134.398
+VX: ,-32.7680
+VY: ,-32.7680
+VZ: ,-32.7680
+FOM: ,10.00000
+D1: ,0.00
+D2: ,0.00
+D3: ,0.00
+D4: ,0.00
+*2D
+
+
+---
+Current Profile ASCII formats:
+
+1x
+Format: $PNORI1,
+Instrument type: 4,
+Head ID: 101811, # in the header
+Number of Beams: 4,
+Number of Cells: 60,
+Blanking Distance: 0.10,
+Cell Size: 0.50,
+Coordinate System: XYZ
+*06
+
+1x
+Format: $PNORS1,
+Date: 110519, # in the header
+Time: 155815, # in the header
+Error code: 0,
+Status code: 10440002,
+Battery Voltage: 23.5,
+Sound Speed: 1500.0,
+Heading: 0.00,
+Heading Std. Dev: 0.0,
+Pitch: 0.0,
+Pitch Std. Dev: 0.00,
+Roll: 0.0,
+Roll Std. Dev: 0.00,
+Pressure: 0.721,
+Pressure Std. Dev: 0.00,
+Temperature: 22.78
+*5B
+
+60x
+Format:     $PNORC1,
+Date:        110519, # in the header, make sure every cell time is the same
+Time:           155815,
+Cell Number:     60, # not added, added from above
+Cell Position:  
+30.1,
+Velocity X:  1.121,
+Velocity Y:   -1.719,
+Velocity Z:    1.238,
+Velocity Z2:  0.120,
+Amplitude Beam 1: 30.2,
+Amplitude Beam 2: 30.8,
+Amplitude Beam 3: 31.2,
+Amplitude Beam 4: 32.6,
+Correlation Beam 1: 5,
+Correlation Beam 2: 1,
+Correlation Beam 3: 6,
+Correlation Beam 4: 3
+*4C
+
+---
+Issues 1:some data with one unknow bits (nul,ASCII=0), but checksum is right.
+
+data hex: 
+{0x24,0x50,0x4e,0x4f,0x52,
+0x43,0x31,0x2c,0x31,0x31,
+0x31,0x34,0x31,0x39,0x2c,
+0x32,0x31,0x32,0x37,0x34,
+0x38,0x2c,0x36,0x30,0x2c,
+0x33,0x30,0x2e,0x31,0x2c,
+0x2d,0x30,0x2e,0x35,0x34,
+0x32,0x2c,0x0,0x30,0x2e,0x33,
+0x37,0x36,0x2c,0x31,0x2e,
+0x33,0x33,0x35,0x2c,0x31,
+0x2e,0x32,0x34,0x30,0x2c,
+0x33,0x31,0x2e,0x39,0x2c,
+0x33,0x31,0x2e,0x37,0x2c,
+0x33,0x31,0x2e,0x30,0x2c,
+0x33,0x31,0x2e,0x30,0x2c,
+0x31,0x30,0x2c,0x31,0x31,
+0x2c,0x38,0x2c,0x31,0x37,
+0x2a,0x37,0x32,0xd,0xa}
+
+checksum: 72 size: 5b
+id: C
+ lo_data: $PNORC1,111419,212748,60,30.1,-0.542,0.376,1.335,1.240,31.9,31.7,31.0,31.0,10,11,8,17*72
+
+ : 7 : e : 15 : 18 : 1d : 24 : 2b : 31 : 37 : 3c : 41 : 46 : 4b : 4e : 51 : 53
+start
+ 1: 111419 2: 212748 3: 60 4: 30.1 5: -0.542 6: 0.376 7: 1.335 8: 1.240 9: 31.9 10: 31.7 11: 31.0 12: 31.0 13: 10 14: 11 15: 8 16: 17*72
+
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stof
+ 1: 111419 2: 212748 3: 60 4: 30.1 5: -0.542 6: 0.376Aborted (core dumped)
+
+----
+issue2: stof sometims will have issue to convert string: 22.53*5F to float: 22.53. 
+
+size: 5d Data:$PNORS1,
+111919,
+161842,
+0,
+10440002,
+23.5,
+1500.0,
+0.00,
+0.0,
+0.0,
+0.00,
+0.0,
+0.00,
+0.540,
+0.00,
+22.53*5F
+
+data hex: 
+24,50,4e,4f,52,53,31,2c,31,31,31,39,31,39,2c,31,36,31,38,34,32,2c,30,2c,31,30,34,34,30,30,30,32,2c,32,33,2e,35,2c,31,35,30,30,2e,30,2c,30,2e,30,30,2c,30,2e,30,2c,30,2e,30,2c,30,2e,30,30,2c,30,2e,30,2c,30,2e,30,30,2c,30,2e,35,34,30,2c,30,2e,30,30,2c,32,32,2e,35,33,2a,35,46,d,a,
+
+start
+terminate called after throwing an instance of 'std::invalid_argument'
+  what():  stof
+ date: 111919 
+ time: 161842 
+ error: 0 
+ status: 10440002 
+ battery: 23.5 
+ sound: 1500.0 
+ heading: 0.00 
+ head_std: 0.0 
+ pitch: 0.0 
+ pitch_std: 0.00 
+ roll: 0.0 
+ roll_std: 0.00 
+ press: 0.540 
+ press_std: 0.00 
+ tmp: 
+
+
+
+ data: $PNORBT7,
+ 1574183993.0010,
+ 21.577,
+ -134.398,
+ -32.7680,
+ -32.7680,
+ -32.7680,
+ 10.00000,
+ 0.00,0.00,0.00,0.00*24
+ , 
+ 1.57418e+09 , 
+ 21.577 , 
+ -32.768 , 
+ -32.768 , 
+ -32.768 , 
+ 10 ,
+  0 , 0 , 0 , 0
