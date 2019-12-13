@@ -9,6 +9,12 @@
         $ sudo apt-get install ros-melodic-serial 
 
         ```
+    - Install ros message package for DVL:
+    ```shell
+        $ cd ~/your_path_catkin_ws/src
+        $ git clone https://github.com/URIsoslab/soslab_msgs
+        $ catkin_make --pkg soslab_msgs
+    ```
 - Install DVL driver
     ```
     $ cd ~/your_path_catkin_ws/src

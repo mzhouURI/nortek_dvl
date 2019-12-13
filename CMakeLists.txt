@@ -8,29 +8,15 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   serial
-  message_generation
   geometry_msgs
+  soslab_msgs
 )
 
-add_message_files(
-  FILES
-  DVL.msg
-  CurrentProfile.msg
-  CellMeasure.msg
-)
-
-
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  geometry_msgs
-  nortek_dvl # for new defined msg
-)
 
 catkin_package(
  INCLUDE_DIRS include
  LIBRARIES nortek_dvl
- CATKIN_DEPENDS roscpp rospy std_msgs serial message_runtime geometry_msgs
+ CATKIN_DEPENDS roscpp rospy std_msgs serial geometry_msgs soslab_msgs
  DEPENDS system_lib
 )
 

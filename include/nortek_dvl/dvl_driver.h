@@ -10,9 +10,9 @@
 
 #include <ros/ros.h>
 #include <serial/serial.h>
-#include <nortek_dvl/DVL.h>
-#include <nortek_dvl/CurrentProfile.h>
-#include <nortek_dvl/CellMeasure.h>
+#include <soslab_msgs/DVL.h>
+#include <soslab_msgs/CurrentProfile.h>
+#include <soslab_msgs/CellMeasure.h>
 #include "configure.h"
 #include <chrono>
 
@@ -65,6 +65,6 @@ private:
     ros::Publisher button_track_pub;
     ros::Publisher currect_profile_pub;
 
-    nortek_dvl::CurrentProfile cp_msg;
+    soslab_msgs::CurrentProfile cp_msg;
 
 };

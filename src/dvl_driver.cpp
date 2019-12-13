@@ -30,8 +30,8 @@ DVLDriver::DVLDriver(ros::NodeHandle node, ros::NodeHandle private_nh)
 
 
     // publisher
-    button_track_pub= node.advertise<nortek_dvl::DVL>("/nortek_dvl/dvl",10);
-    currect_profile_pub= node.advertise<nortek_dvl::CurrentProfile>("/nortek_dvl/current_profile",5);
+    button_track_pub= node.advertise<soslab_msgs::DVL>("/nortek_dvl/dvl",10);
+    currect_profile_pub= node.advertise<soslab_msgs::CurrentProfile>("/nortek_dvl/current_profile",5);
 }
 
 DVLDriver::~DVLDriver()
@@ -157,7 +157,7 @@ void DVLDriver::decodeBottonTrack(const std::string& str)
 {
     /*size: 100+ char*/
 
-    nortek_dvl::DVL msg;
+    soslab_msgs::DVL msg;
 
     char time[20];
 
@@ -221,11 +221,9 @@ void DVLDriver::decodeCurrentProfileS(const std::string& str)
 
 void DVLDriver::decodeCurrentProfileC(const std::string& str)
 {
-    // add cell time
-
     /*size: 90+ char*/
 
-    nortek_dvl::CellMeasure cell;
+    soslab_msgs::CellMeasure cell;
 
     const char *c = str.c_str();
 
